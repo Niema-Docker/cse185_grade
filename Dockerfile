@@ -14,6 +14,12 @@ RUN apk update && \
     cd .. && \
     rm -rf htslib-* && \
 
+    # install ART
+    wget -qO- "https://www.niehs.nih.gov/sites/default/files/2024-02/artbinmountrainier2016.06.05linux64.tgz" | tar -zx && \
+    rm art_*/*.txt && \
+    mv art_*/art_* /usr/local/bin/ && \
+    rm -rf art_* && \
+
     # install Quack
     wget -O /usr/local/bin/quack "https://github.com/IGBB/quack/releases/download/1.2.1/linux.quack" && \
     chmod a+x /usr/local/bin/quack && \
