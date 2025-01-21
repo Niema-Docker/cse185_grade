@@ -14,5 +14,9 @@ RUN apk update && \
     cd .. && \
     rm -rf htslib-* && \
 
+    # install Quack
+    wget -O /usr/local/bin/quack "https://github.com/IGBB/quack/releases/download/1.2.1/linux.quack" && \
+    chmod a+x /usr/local/bin/quack && \
+
     # clean up
     rm -rf /var/cache/apk/*
