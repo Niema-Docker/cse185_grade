@@ -25,8 +25,12 @@ RUN apk update && \
     rm -rf art_* && \
 
     # install Quack
-    wget -O /usr/local/bin/quack "https://github.com/IGBB/quack/releases/download/1.2.1/linux.quack" && \
-    chmod a+x /usr/local/bin/quack && \
+    git clone --recursive "https://github.com/IGBB/quack.git" && \
+    cd quack && \
+    make && \
+    mv quack /usr/local/bin/quack && \
+    cd .. && \
+    rm -rf quack && \
 
     # clean up
     rm -rf /var/cache/apk/*
