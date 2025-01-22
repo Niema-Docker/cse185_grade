@@ -2,7 +2,7 @@ FROM debian:12.2-slim
 MAINTAINER Niema Moshiri <niemamoshiri@gmail.com>
 RUN apt-get update && \
     # install general dependencies
-    apt-get install -y --no-install-recommends bison bzip2 cmake flex libboost-all-dev libbz2-dev libcurl4-openssl-dev libeigen3-dev liblzma-dev g++ gcc git make python3 python3-pip unzip zlib1g-dev && \
+    apt-get install -y --no-install-recommends bison bzip2 cmake flex libboost-all-dev libbz2-dev libcurl4-openssl-dev libeigen3-dev liblzma-dev g++ gcc git make python3 python3-pip unzip wget zlib1g-dev && \
 
     # install htslib
     wget -qO- "https://github.com/samtools/htslib/releases/download/1.21/htslib-1.21.tar.bz2" | tar -xj && \
