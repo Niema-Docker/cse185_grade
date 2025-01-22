@@ -32,5 +32,12 @@ RUN apk update && \
     cd .. && \
     rm -rf quack && \
 
+    # install QUAST
+    wget -qO- "https://github.com/ablab/quast/releases/download/quast_5.3.0/quast-5.3.0.tar.gz" | tar -zx && \
+    cd quast-* && \
+    python3 setup.py install && \
+    cd .. && \
+    rm -rf quast-* && \
+
     # clean up
     rm -rf /var/cache/apk/*
