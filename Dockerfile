@@ -39,5 +39,12 @@ RUN apk update && \
     cd .. && \
     rm -rf quast-* && \
 
+    # install SPAdes
+    wget -qO- "https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0.tar.gz" | tar -zx && \
+    cd SPAdes-* && \
+    ./spades_compile.sh && \
+    cd .. && \
+    rm -rf SPAdes-* && \
+
     # clean up
     rm -rf /var/cache/apk/*
