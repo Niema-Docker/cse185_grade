@@ -23,6 +23,10 @@ RUN apt-get update && \
     cd .. && \
     rm -rf art_* && \
 
+    # install fastp
+    wget -O /usr/local/bin/fastp "http://opengene.org/fastp/fastp.0.24.0" && \
+    chmod a+x /usr/local/bin/fastp && \
+
     # install Quack
     wget -O /usr/local/bin/quack "https://github.com/IGBB/quack/releases/download/1.2.1/linux.quack" && \
     chmod a+x /usr/local/bin/quack && \
