@@ -1,13 +1,12 @@
-FROM alpine:3.13.5
+FROM debian:12.2-slim
 MAINTAINER Niema Moshiri <niemamoshiri@gmail.com>
-RUN apk update && \
+RUN apt-get update && \
     # install general dependencies
-    apk add --no-cache autoconf automake bash bzip2-dev cmake curl-dev g++ git gsl-dev libexecinfo-dev make py3-pip py3-setuptools python3 xz-dev zlib-dev && \
+    apt-get install -y --no-install-recommends bison bzip2 cmake flex libboost-all-dev libbz2-dev libcurl4-openssl-dev libeigen3-dev liblzma-dev g++ gcc git make python3 python3-pip unzip zlib1g-dev && \
 
     # install htslib
     wget -qO- "https://github.com/samtools/htslib/releases/download/1.21/htslib-1.21.tar.bz2" | tar -xj && \
     cd htslib-* && \
-    autoreconf -i && \
     ./configure && \
     make && \
     make install && \
@@ -25,12 +24,8 @@ RUN apk update && \
     rm -rf art_* && \
 
     # install Quack
-    git clone --recursive "https://github.com/IGBB/quack.git" && \
-    cd quack && \
-    make && \
-    mv quack /usr/local/bin/quack && \
-    cd .. && \
-    rm -rf quack && \
+    wget -O /usr/local/bin/quack "https://github.com/IGBB/quack/releases/download/1.2.1/linux.quack" && \
+    chmod a+x /usr/local/bin/quack && \
 
     # install QUAST
     wget -qO- "https://github.com/ablab/quast/releases/download/quast_5.3.0/quast-5.3.0.tar.gz" | tar -zx && \
@@ -40,12 +35,12 @@ RUN apk update && \
     rm -rf quast-* && \
 
     # install SPAdes
-    wget -qO- "https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0.tar.gz" | tar -zx && \
-    cd SPAdes-* && \
-    sed -i 's/char \*message = strerror_r(error_code, buffer, buffer_size);/\/\*char \*message = \*\/strerror_r(error_code, buffer, buffer_size); char \*message = buffer;/g' ext/src/cppformat/format.cc && \
-    PREFIX=/usr/local ./spades_compile.sh && \
-    cd .. && \
+    wget -qO- "https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0-Linux.tar.gz" | tar -zx && \
+    mv SPAdes-*/bin/* /usr/local/bin/ && \
+    mv SPAdes-*/share/* /usr/local/share/ && \
     rm -rf SPAdes-* && \
 
     # clean up
-    rm -rf /var/cache/apk/*
+    apt-get autoremove -y && \
+    apt-get purge -y --auto-remove && \
+    rm -rf /var/lib/apt/lists/*
