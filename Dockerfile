@@ -2,7 +2,7 @@ FROM alpine:3.13.5
 MAINTAINER Niema Moshiri <niemamoshiri@gmail.com>
 RUN apk update && \
     # install general dependencies
-    apk add --no-cache autoconf automake bash bzip2-dev cmake curl-dev g++ git gsl-dev make py3-pip py3-setuptools python3 xz-dev zlib-dev && \
+    apk add --no-cache autoconf automake bash bzip2-dev cmake curl-dev g++ git gsl-dev libexecinfo-dev make py3-pip py3-setuptools python3 xz-dev zlib-dev && \
 
     # install htslib
     wget -qO- "https://github.com/samtools/htslib/releases/download/1.21/htslib-1.21.tar.bz2" | tar -xj && \
