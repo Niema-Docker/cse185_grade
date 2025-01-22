@@ -42,6 +42,7 @@ RUN apk update && \
     # install SPAdes
     wget -qO- "https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0.tar.gz" | tar -zx && \
     cd SPAdes-* && \
+    sed -i 's/strerror_r(error_code,/strerror_r((char*)error_code,/g' ext/src/cppformat/format.cc && \
     PREFIX=/usr/local ./spades_compile.sh && \
     cd .. && \
     rm -rf SPAdes-* && \
