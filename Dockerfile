@@ -51,6 +51,13 @@ RUN apt-get update && \
     mv FastTree /usr/local/bin && \
     rm FastTree.c && \
 
+    # install HISAT2
+    wget -O hisat2.zip "https://cloud.biohpc.swmed.edu/index.php/s/hisat2-220-Linux_x86_64/download" && \
+    unzip hisat2*.zip && \
+    sudo mv hisat2-*/hisat2* /usr/local/bin/ && \
+    sudo mv hisat2-*/*.py /usr/local/bin/ && \
+    rm -rf hisat2* && \
+
     # install IQ-TREE 2
     wget -qO- "https://github.com/iqtree/iqtree2/releases/download/v2.3.6/iqtree-2.3.6-Linux-intel.tar.gz" | tar -zx && \
     mv iqtree-*/bin/iqtree2 /usr/local/bin/iqtree2 && \
