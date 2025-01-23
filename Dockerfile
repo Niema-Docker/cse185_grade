@@ -54,8 +54,8 @@ RUN apt-get update && \
     # install HISAT2
     wget -O hisat2.zip "https://cloud.biohpc.swmed.edu/index.php/s/hisat2-220-Linux_x86_64/download" && \
     unzip hisat2*.zip && \
-    sudo mv hisat2-*/hisat2* /usr/local/bin/ && \
-    sudo mv hisat2-*/*.py /usr/local/bin/ && \
+    mv hisat2-*/hisat2* /usr/local/bin/ && \
+    mv hisat2-*/*.py /usr/local/bin/ && \
     rm -rf hisat2* && \
 
     # install IQ-TREE 2
