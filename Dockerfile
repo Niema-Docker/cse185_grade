@@ -27,6 +27,10 @@ RUN apt-get update && \
     wget -O /usr/local/bin/fastp "http://opengene.org/fastp/fastp.0.24.0" && \
     chmod a+x /usr/local/bin/fastp && \
 
+    # install Prodigal
+    wget -O /usr/local/bin/prodigal "https://github.com/hyattpd/Prodigal/releases/download/v2.6.3/prodigal.linux" && \
+    chmod a+x /usr/local/bin/prodigal && \
+
     # install Quack
     wget -O /usr/local/bin/quack "https://github.com/IGBB/quack/releases/download/1.2.1/linux.quack" && \
     chmod a+x /usr/local/bin/quack && \
