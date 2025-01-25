@@ -30,7 +30,7 @@ RUN apt-get update && \
     # install Bowtie2
     wget "https://github.com/BenLangmead/bowtie2/releases/download/v2.5.4/bowtie2-2.5.4-linux-x86_64.zip" && \
     unzip bowtie2-*.zip && \
-    mv bowtie2-*/bowtie2-* /usr/local/bin/ && \
+    mv bowtie2-*/bowtie2* /usr/local/bin/ && \
     rm -rf bowtie2-* && \
 
     # install BWA
