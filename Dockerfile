@@ -111,6 +111,15 @@ RUN apt-get update && \
     cd .. && \
     rm -rf salmon-* && \
 
+    # install samtools
+    wget -qO- "https://github.com/samtools/samtools/releases/download/1.21/samtools-1.21.tar.bz2" | tar -xj && \
+    cd samtools-* && \
+    ./configure --prefix=/usr/local --without-curses && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf samtools-* && \
+
     # install SPAdes
     wget -qO- "https://github.com/ablab/spades/releases/download/v4.0.0/SPAdes-4.0.0-Linux.tar.gz" | tar -zx && \
     mv SPAdes-*/bin/* /usr/local/bin/ && \
