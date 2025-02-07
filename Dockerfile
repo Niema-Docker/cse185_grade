@@ -6,7 +6,7 @@ RUN apt-get update && \
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib && \
 
     # install Python packages
-    pip3 install --break-system-packages networkx phylo-treetime treeswift && \
+    pip3 install --break-system-packages networkx niemads phylo-treetime treeswift && \
 
     # install htslib
     wget -qO- "https://github.com/samtools/htslib/releases/download/1.21/htslib-1.21.tar.bz2" | tar -xj && \
@@ -145,6 +145,11 @@ RUN apt-get update && \
     make install && \
     cd .. && \
     rm -rf tn93-* && \
+
+    # install TreeCluster
+    wget -qO- "https://github.com/niemasd/TreeCluster/archive/refs/tags/1.0.3.tar.gz" | tar -zx && \
+    mv TreeCluster-*/TreeCluster.py /usr/local/bin/ && \
+    rm -rf TreeCluster-* && \
 
     # install ViralConsensus
     wget -qO- "https://github.com/niemasd/ViralConsensus/archive/refs/tags/0.0.6.tar.gz" | tar -zx && \
