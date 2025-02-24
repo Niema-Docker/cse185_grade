@@ -51,6 +51,11 @@ RUN apt-get update && \
     mv FastTree /usr/local/bin && \
     rm FastTree.c && \
 
+    # install freebayes
+    wget -qO- "https://github.com/freebayes/freebayes/releases/download/v1.3.6/freebayes-1.3.6-linux-amd64-static.gz" | gunzip > freebayes && \
+    chmod a+x freebayes && \
+    mv freebayes /usr/local/bin/ && \
+
     # install HISAT2
     wget -O hisat2.zip "https://cloud.biohpc.swmed.edu/index.php/s/hisat2-220-Linux_x86_64/download" && \
     unzip hisat2*.zip && \
