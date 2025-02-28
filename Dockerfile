@@ -2,7 +2,7 @@ FROM debian:12.2-slim
 MAINTAINER Niema Moshiri <niemamoshiri@gmail.com>
 RUN apt-get update && \
     # install general dependencies
-    apt-get install -y --no-install-recommends bison bzip2 cmake curl flex libboost-all-dev libbz2-dev libcurl4-openssl-dev libeigen3-dev libgsl-dev liblzma-dev g++ gcc git make python-is-python3 python3 python3-pip unzip wget zlib1g-dev && \
+    apt-get install -y --no-install-recommends bison bzip2 cmake curl flex libboost-all-dev libbz2-dev libcurl4-openssl-dev libeigen3-dev libgsl-dev liblzma-dev g++ gcc git make perl-doc python-is-python3 python3 python3-pip unzip wget zlib1g-dev && \
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib && \
 
     # install Python packages
@@ -120,6 +120,14 @@ RUN apt-get update && \
     mv raxml-ng /usr/local/bin/ && \
     cd .. && \
     rm -rf raxml && \
+
+    # install RSEM
+    wget -qO- "https://github.com/deweylab/RSEM/archive/refs/tags/v1.3.3.tar.gz" | tar -zx && \
+    cd RSEM-* && \
+    make && \
+    make install && \
+    cd .. && \
+    rm -rf RSEM-* && \
 
     # install Salmon
     wget -qO- "https://github.com/COMBINE-lab/salmon/archive/refs/tags/v1.10.1.tar.gz" | tar -zx && \
