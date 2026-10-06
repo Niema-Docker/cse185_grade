@@ -1,7 +1,6 @@
 FROM debian:stable-slim
-# same as https://github.com/Niema-Docker/cse185_code/blob/main/Dockerfile but with `sudo -H` and `sudo` removed
 RUN apt-get update && \
-    # install general dependencies
+    # install general dependencies (same as https://github.com/Niema-Docker/cse185_code/blob/main/Dockerfile but with `sudo -H` and `sudo` removed)
     apt-get install -y --no-install-recommends bc bison bzip2 cmake flex git libboost-all-dev libbz2-dev libcurl4-openssl-dev libeigen3-dev liblzma-dev g++ gcc git make perl-doc python-is-python3 python3 python3-pip unzip xz-utils zlib1g-dev && \
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib && \
 
