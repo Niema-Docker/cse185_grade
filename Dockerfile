@@ -184,4 +184,4 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     apt-get purge -y --auto-remove && \
     rm -rf /var/lib/apt/lists/*
-ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib""
+ENV LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/local/lib"
