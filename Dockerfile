@@ -9,7 +9,7 @@ RUN apt-get update && \
     pip3 install --break-system-packages --upgrade networkx niemads phylo-treetime scikit-learn setuptools treeswift && \
 
     # install htslib
-    wget -qO- "https://github.com/samtools/htslib/releases/download/1.24/htslib-1.24.tar.bz2" | tar -xj && \
+    wget -qO- "https://github.com/samtools/htslib/releases/download/1.25/htslib-1.25.tar.bz2" | tar -xj && \
     cd htslib-* && \
     ./configure && \
     make install && \
@@ -135,7 +135,7 @@ RUN apt-get update && \
     rm -rf salmon-* && \
 
     # install samtools
-    wget -qO- "https://github.com/samtools/samtools/releases/download/1.24/samtools-1.24.tar.bz2" | tar -xj && \
+    wget -qO- "https://github.com/samtools/samtools/releases/download/1.25/samtools-1.25.tar.bz2" | tar -xj && \
     cd samtools-* && \
     ./configure --prefix=/usr/local --without-curses && \
     make && \
